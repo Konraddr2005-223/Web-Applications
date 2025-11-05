@@ -9,13 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     
-    
-    const openingHours = [
+      const openingHours = [
+
         null, 
+
+        { open: 8, close: 18 }, 
+
         { open: 8, close: 18 }, 
         { open: 8, close: 18 }, 
         { open: 8, close: 18 }, 
+
         { open: 8, close: 18 }, 
+
+        { open: 9, close: 17 } 
+
     ];
 
     
