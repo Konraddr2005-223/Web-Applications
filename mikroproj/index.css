@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+a { 
+    text-decoration: none;
+    color: #6a4b3a;
+    transition: color 0.3s ease;
+
+}
+
+a:hover {
+    color: #a0785a;
+}
+
+
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: burlywood;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+
+
+}
+
+.btn:hover { 
+    background-color: gainsboro;
+}
+
+/* Header */
+.main-header {
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+
+.top-bar {
+    background-color: #f1f1f1; 
+    padding: 10px 0; 
+    font-size: 0.9em; 
+    color: #666; 
+    border-bottom: 1px solid #eee; 
+}
+
+.top-bar .container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+
+/* Główny pasek nawigacyjny (Navbar) */
+.navbar .container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 20px; 
+}
+
+.logo img {
+    height: 80px; 
+    display: block; 
+}
+
+.navbar nav ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+}
+
+.navbar nav ul li {
+    margin-left: 50px;
+}
+
+.navbar nav ul li a {
+    color: #333; 
+    font-weight: 600;
+    padding: 8px 0; 
+    position: relative; 
+}
+
+/* Podkreślenie przy najechaniu na link w nawigacji */
+.navbar nav ul li a::after {
+    content: ''; 
+    position: absolute;
+    width: 0; 
+    height: 2px; 
+    background-color: #6a4b3a; 
+    left: 0;
+    bottom: 0; 
+    transition: width 0.3s ease; 
+}
+
+.navbar nav ul li a:hover::after {
+    width: 100%; /* Rozwinięcie podkreślenia na 100% szerokości linku */
+}
+
+
+@media (min-width: 768px) {
+    .top-bar  {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar nav,
+    .navbar  {
+        display: none; 
+    }
+    .navbar .container {
+        justify-content: center; 
+    }
+}
+
+/* === Hero Section (WERSJA POPRAWIONA I RESPONSYWNA) === */
+
+.hero-section {
+    background-image: url('photos-gallery/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    
+    
+    min-height: 100vh; 
+    width: 100%;
+    
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center;     
+    justify-content: center; 
+    
+    
+    padding: 100px 20px 50px 20px; 
+    
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    
+    
+    box-sizing: border-box; 
+}
+
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+
+.hero-section h1 {
+   
+   
+    font-size: clamp(2.5rem, 5vw + 1rem, 5em); 
+    
+    margin: 0; 
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-section p {
+    font-size: clamp(1.2rem, 2.5vw, 2em);
+    margin: 10px 0 0 0; 
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+
+.hero-bubbles {
+    margin-top: 50px; 
+    display: flex;
+    justify-content: center;
+    
+    flex-wrap: wrap; 
+    
+    
+    gap: 30px; 
+    
+    width: 100%; 
+}
+
+.bubble-image {
+   
+    width: clamp(180px, 25vw, 280px);
+    height: clamp(180px, 25vw, 280px);
+    
+    
+    border-radius: 50%; 
+    
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    
+   
+    background-color: #fff; 
+}
+
+
+.bubble-image:hover {
+    transform: translateY(-5px) scale(1.05); 
+}
+
+@media (max-width: 600px) {
+    .hero-bubbles {
+        flex-wrap: wrap; 
+        gap: 15px; 
+    }
+    .bubble-image {
+        width: 80px; 
+        height: 80px;
+    }
+}
+
+
+
+
+.footer 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8b8585;
+}

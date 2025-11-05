@@ -1,0 +1,700 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+a { 
+    text-decoration: none;
+    color: #6a4b3a;
+    transition: color 0.3s ease;
+
+}
+
+a:hover {
+    color: #a0785a;
+}
+
+
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: burlywood;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+
+
+}
+
+.btn:hover { 
+    background-color: gainsboro;
+}
+
+/* Header */
+.main-header {
+    background-color: #fff; /* Białe tło nagłówka */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Delikatny cień pod nagłówkiem */
+}
+
+
+.top-bar {
+    background-color: #f1f1f1; /* Jasnoszare tło */
+    padding: 10px 0; /* Pionowe odstępy */
+    font-size: 0.9em; /* Mniejsza czcionka */
+    color: #666; /* Ciemniejszy kolor tekstu */
+    border-bottom: 1px solid #eee; /* Cienka ramka na dole */
+}
+
+.top-bar .container {
+    display: flex; /* Użycie Flexbox do ułożenia elementów */
+    justify-content: space-between; /* Rozłożenie elementów na końcach kontenera */
+    align-items: center; /* Wyśrodkowanie elementów w pionie */
+}
+
+.top-bar .cart-icon {
+    font-size: 1.2em; /* Większa ikona koszyka */
+    color: #666; /* Kolor ikony */
+}
+
+/* Główny pasek nawigacyjny (Navbar) */
+.navbar .container {
+    display: flex; /* Flexbox do ułożenia logo, nawigacji i koszyka */
+    justify-content: space-between; /* Rozłożenie elementów */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    padding: 15px 20px; /* Wewnętrzne odstępy */
+}
+
+.logo img {
+    height: 80px; /* Wysokość logo - dostosuj, jeśli Twoje logo ma inny rozmiar */
+    display: block; /* Ważne, aby usunąć ewentualne marginesy pod obrazkiem */
+}
+
+.navbar nav ul {
+    list-style: none; /* Usuwa domyślne kropki listy */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox dla elementów menu, aby były w jednej linii */
+}
+
+.navbar nav ul li {
+    margin-left: 50px; /* Odstęp między elementami menu */
+}
+
+.navbar nav ul li a {
+    color: #333; /* Kolor tekstu linków */
+    font-weight: 600; /* Pogrubienie tekstu */
+    padding: 8px 0; /* Delikatne odstępy dla lepszego klikania */
+    position: relative; /* Potrzebne do animacji podkreślenia */
+}
+
+/* Podkreślenie przy najechaniu na link w nawigacji */
+.navbar nav ul li a::after {
+    content: ''; /* Wymagane dla pseudo-elementu */
+    position: absolute;
+    width: 0; /* Początkowo niewidoczne */
+    height: 2px; /* Grubość podkreślenia */
+    background-color: #6a4b3a; /* Kolor podkreślenia */
+    left: 0;
+    bottom: 0; /* Pozycja na dole linku */
+    transition: width 0.3s ease; /* Płynna animacja */
+}
+
+.navbar nav ul li a:hover::after {
+    width: 100%; /* Rozwinięcie podkreślenia na 100% szerokości linku */
+}
+
+/* Ukrycie koszyka desktopowego na małych ekranach (dla responsywności) */
+.navbar .cart-icon.desktop {
+    font-size: 1.5em; /* Większy koszyk */
+    color: #6a4b3a; /* Kolor koszyka */
+}
+
+/* Na razie ukryjemy koszyk z top-bar na desktopie */
+/* Później dodamy media queries, aby pokazywać i ukrywać elementy w zależności od rozmiaru ekranu */
+@media (min-width: 768px) {
+    .top-bar .cart-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar nav,
+    .navbar .cart-icon.desktop {
+        display: none; /* Ukryj nawigację i koszyk desktopowy na małych ekranach */
+    }
+    .navbar .container {
+        justify-content: center; /* Wyśrodkuj logo na małych ekranach */
+    }
+}
+
+/* === Hero Section (WERSJA POPRAWIONA I RESPONSYWNA) === */
+
+.hero-section {
+    background-image: url('photos-gallery/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 💡 DODATEK: Efekt paralaksy - tło stoi w miejscu przy przewijaniu */
+    
+    /* 1. Poprawka wysokości: min-height zamiast height */
+    min-height: 100vh; /* Sekcja ma *co najmniej* 100% wysokości okna, ale może być wyższa */
+    width: 100%;
+    
+    /* 2. Poprawka Flexbox: Ustawienie na kolumnę */
+    display: flex;
+    flex-direction: column;  /* KLUCZOWE: Układa tekst NAD obrazkami */
+    align-items: center;     /* Centruje wszystko w poziomie */
+    justify-content: center; /* Centruje całą zawartość w pionie */
+
+    /* 3. Poprawka odstępu: Użyj paddingu zamiast błędnej składni */
+    /* Daje odstęp na górze i na dole, oraz mniejszy po bokach na telefonie */
+    padding: 100px 20px 50px 20px; 
+    
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    
+    /* Dodajemy box-sizing, aby padding nie psuł wymiarów */
+    box-sizing: border-box; 
+}
+
+/* Overlay jest OK, bez zmian */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* 4. Poprawka RWD dla czcionek: Użycie clamp() */
+.hero-section h1 {
+    /* clamp(MIN, PREFEROWANE, MAX) */
+    /* Czcionka będzie miała 5vw, ale nie mniej niż 2.5rem i nie więcej niż 5em */
+    font-size: clamp(2.5rem, 5vw + 1rem, 5em); 
+    
+    margin: 0; /* Resetujemy marginesy, będziemy kontrolować odstępy gap'em */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-section p {
+    font-size: clamp(1.2rem, 2.5vw, 2em);
+    margin: 10px 0 0 0; /* Mały margines od góry */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* 5. Poprawka RWD dla "dymków" (obrazków) */
+.hero-bubbles {
+    margin-top: 50px; /* Zmniejszony odstęp od tekstu */
+    display: flex;
+    justify-content: center;
+    
+    flex-wrap: wrap; 
+    
+    /* 6. Poprawka RWD dla odstępów: Znacznie mniejszy 'gap' */
+    gap: 30px; /* Stały, ale rozsądny odstęp */
+    
+    width: 100%; /* Kontener zajmuje całą dostępną szerokość */
+}
+
+.bubble-image {
+    /* 7. Poprawka RWD dla rozmiaru: Elastyczny rozmiar zamiast sztywnego */
+    /* Używamy clamp() także dla rozmiaru! */
+    width: clamp(180px, 25vw, 280px);
+    height: clamp(180px, 25vw, 280px);
+    
+    /* 8. Poprawka na koło: 50% zamiast 10% */
+    border-radius: 50%; /* 50% tworzy idealne koło */
+    
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    
+    /* 💡 DODATEK: Drobne tło, jeśli obrazki mają przezroczystość */
+    background-color: #fff; 
+}
+
+
+.bubble-image:hover {
+    transform: translateY(-5px) scale(1.05); /* Lekkie uniesienie i powiększenie przy najechaniu */
+}
+
+/* Responsywność dla dymków na mniejszych ekranach */
+@media (max-width: 600px) {
+    .hero-bubbles {
+        flex-wrap: wrap; /* Pozwala dymkom na zawijanie się do nowej linii */
+        gap: 15px; /* Mniejszy odstęp na mniejszych ekranach */
+    }
+    .bubble-image {
+        width: 80px; /* Mniejszy rozmiar dymków na małych ekranach */
+        height: 80px;
+    }
+}
+
+
+
+
+.footer 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8b8585;
+}
+
+/* Sekcja Menu */
+.menu-page {
+    padding: 60px 0; /* Pionowe odstępy dla całej sekcji */
+    background-color: #fff; /* Białe tło sekcji menu */
+    text-align: center; /* Wyśrodkowanie głównego nagłówka */
+}
+
+.menu-page h2 {
+    margin-bottom: 50px; /* Odstęp pod głównym nagłówkiem menu */
+    color: #3a2b21; /* Ciemniejszy kolor dla głównego nagłówka */
+}
+
+.menu-category {
+    margin-bottom: 60px; /* Odstęp między kategoriami */
+    background-color: #fcfcfc; /* Jasne tło dla każdej kategorii */
+    padding: 30px;
+    border-radius: 8px; /* Lekko zaokrąglone rogi */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Delikatny cień */
+}
+
+.menu-category h3 {
+    font-size: 2em; /* Większa czcionka dla nagłówków kategorii */
+    color: #6a4b3a; /* Kolor brązu dla nagłówków kategorii */
+    margin-bottom: 10px;
+}
+
+.category-description {
+    font-style: italic; /* Kursywa dla opisu kategorii */
+    color: #777;
+    margin-bottom: 30px; /* Odstęp pod opisem kategorii */
+    font-size: 1.1em;
+}
+
+.menu-item {
+    display: flex; /* Flexbox do ułożenia szczegółów i ceny w jednej linii */
+    justify-content: space-between; /* Rozłożenie na końcach */
+    align-items: flex-start; /* Wyrównanie do góry, jeśli opisy są wieloliniowe */
+    padding: 15px 0; /* Odstępy pionowe dla każdej pozycji */
+    border-bottom: 1px dashed #eee; /* Dzielona linia pod każdą pozycją */
+}
+
+.menu-item:last-child {
+    border-bottom: none; /* Usuń linię pod ostatnią pozycją w kategorii */
+}
+
+.item-details {
+    text-align: left; /* Wyrównanie tekstu do lewej w szczegółach pozycji */
+    flex-grow: 1; /* Pozwól na rozszerzanie się, aby zająć dostępną przestrzeń */
+}
+
+.item-details h4 {
+    font-size: 1.4em; /* Rozmiar nazwy pozycji */
+    color: #4a3c30; /* Ciemniejszy kolor */
+    margin-bottom: 5px;
+}
+
+.item-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 0; /* Usuń domyślny margines */
+}
+
+.item-price {
+    font-size: 1.5em; /* Większa czcionka dla ceny */
+    font-weight: 700; /* Pogrubienie ceny */
+    color: #6a4b3a; /* Kolor brązu dla ceny */
+    margin-left: 20px; /* Odstęp od szczegółów */
+    flex-shrink: 0; /* Zapobiega zmniejszaniu się ceny na małych ekranach */
+}
+
+/* Responsywność dla menu */
+@media (max-width: 768px) {
+    .menu-page h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .menu-category h3 {
+        font-size: 1.6em;
+    }
+    .item-details h4 {
+        font-size: 1.2em;
+    }
+    .item-price {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        flex-direction: column; /* Ułożenie elementów w kolumnie na bardzo małych ekranach */
+        align-items: center; /* Wyśrodkowanie w kolumnie */
+        text-align: center;
+        padding: 10px 0;
+    }
+    .item-details {
+        margin-bottom: 5px; /* Odstęp między opisem a ceną */
+        text-align: center;
+    }
+    .item-price {
+        margin-left: 0; /* Usuń margines, gdy elementy są w kolumnie */
+    }
+}
+
+
+/* Sekcja Galerii */
+.gallery-section {
+    padding: 60px 0; /* Pionowe odstępy dla sekcji */
+    background-color: #f8f8f8; /* Tło sekcji */
+    text-align: center; /* Wyśrodkowanie nagłówka */
+}
+
+.gallery-section h2 {
+    margin-bottom: 40px; /* Odstęp pod nagłówkiem */
+    color: #3a2b21;
+}
+
+.gallery-grid {
+    display: grid; /* Aktywuje CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* KLUCZ: Trzy kolumny o równej szerokości */
+    gap: 20px; /* Odstępy między elementami siatki */
+    max-width: 1200px; /* Ogranicz szerokość siatki */
+    margin: 0 auto; /* Wyśrodkuj siatkę */
+}
+
+.gallery-item {
+    background-color: #fff; /* Białe tło dla każdego elementu */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    overflow: hidden; /* Ważne, aby obrazki nie wystawały poza zaokrąglone rogi */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Delikatny cień */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Płynna animacja */
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Lekkie uniesienie przy najechaniu */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Większy cień przy najechaniu */
+}
+
+.gallery-image {
+    width: 100%; /* Obrazek wypełnia całą szerokość swojego kontenera */
+    height: 300px; /* Stała wysokość dla wszystkich obrazków */
+    object-fit: cover; /* KLUCZ: Obrazek pokryje całą przestrzeń, przycinając nadmiar */
+    display: block; /* Usuwa ewentualne marginesy pod obrazkiem */
+}
+
+/* Responsywność dla galerii */
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Na tabletach: dwie kolumny */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Na smartfonach: jedna kolumna */
+        gap: 10px;
+    }
+    .gallery-image {
+        height: 250px; /* Mniejsza wysokość obrazków na smartfonach */
+    }
+}
+
+
+/* Sekcja Kontaktowa */
+.contact-section {
+    padding: 80px 0; /* Większe odstępy */
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-section h2 {
+    margin-bottom: 20px;
+    color: #3a2b21;
+}
+
+.contact-intro {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-content {
+    display: flex; /* Flexbox do ułożenia formularza i informacji obok siebie */
+    gap: 40px; /* Odstęp między formularzem a informacjami */
+    flex-wrap: wrap; /* Pozwala na zawijanie elementów na mniejszych ekranach */
+    justify-content: center; /* Centruje elementy */
+    align-items: flex-start; /* Wyrównuje do góry */
+}
+
+/* Stylizacja Formularza */
+.contact-form {
+    flex: 1 1 500px; /* Pozwoli formularzowi zajmować co najmniej 500px, ale rozszerzać się */
+    background-color: #fcfcfc;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left; /* Tekst w formularzu wyrównany do lewej */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Odstęp między grupami pól */
+}
+
+.form-group label {
+    display: block; /* Etykieta na osobnej linii */
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a3c30;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%; /* Pola wypełniają całą dostępną szerokość */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif; /* Używamy tej samej czcionki co reszta body */
+    box-sizing: border-box; /* Ważne, aby padding nie zwiększał szerokości */
+}
+
+.form-group textarea {
+    resize: vertical; /* Pozwala użytkownikowi zmieniać wysokość textarea, ale nie szerokość */
+}
+
+.contact-form .btn {
+    width: auto; /* Przycisk nie powinien rozciągać się na 100% */
+    padding: 12px 30px;
+    margin-top: 10px;
+}
+
+/* Stylizacja Informacji Kontaktowych */
+.contact-info {
+    flex: 1 1 350px; /* Pozwoli informacjom zajmować co najmniej 350px */
+    background-color: #fcfcfc;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.contact-info h3 {
+    color: #6a4b3a;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.05em;
+    display: flex; /* Flexbox dla ikon i tekstu */
+    align-items: center;
+}
+
+.contact-info i {
+    color: #a0785a; /* Kolor ikon */
+    margin-right: 15px; /* Odstęp między ikoną a tekstem */
+    font-size: 1.3em;
+    width: 25px; /* Zapewnia stałą szerokość dla ikony, aby tekst był wyrównany */
+    text-align: center;
+}
+
+.map-placeholder {
+    margin-top: 30px;
+    background-color: #eee; /* Tło dla niewyrenderowanej mapy */
+    border-radius: 8px;
+    overflow: hidden; /* Aby obrazek mapy też miał zaokrąglone rogi */
+}
+
+/* Responsywność formularza */
+@media (max-width: 900px) {
+    .contact-content {
+        flex-direction: column; /* Na mniejszych ekranach: formularz i info pod sobą */
+        align-items: center;
+    }
+    .contact-form, .contact-info {
+        flex: 1 1 100%; /* Elementy zajmują całą szerokość */
+        max-width: 500px; /* Ogranicz szerokość na mniejszych ekranach */
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-section {
+        padding: 50px 0;
+    }
+    .contact-intro {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .contact-form, .contact-info {
+        padding: 20px;
+    }
+    .contact-info h3 {
+        font-size: 1.5em;
+    }
+}
+/* Kontener na filmik w galerii */
+.video-container {
+    margin-top: 60px; /* Odstęp od siatki zdjęć powyżej */
+    margin-bottom: 20px; /* Odstęp od elementów poniżej (jeśli są) */
+    max-width: 900px; /* Ogranicz maksymalną szerokość kontenera wideo */
+    margin-left: auto; /* Wyśrodkuj kontener wideo */
+    margin-right: auto; /* Wyśrodkuj kontener wideo */
+    text-align: center; /* Wyśrodkuj nagłówek h3 */
+    padding: 0 20px; /* Odstępy po bokach na mniejszych ekranach */
+}
+
+.video-container h3 {
+    margin-bottom: 30px; /* Odstęp pod nagłówkiem filmu */
+    color: #6a4b3a; /* Kolor nagłówka filmu */
+    font-size: 2.2em;
+}
+
+/* RESPONSYWNE WIDEO (utrzymywanie proporcji 16:9) */
+.responsive-video {
+    position: relative; /* Kontener dla pozycjonowania iframe */
+    width: 100%; /* Wypełnij całą szerokość rodzica */
+    padding-bottom: 56.25%; /* To tworzy magiczny efekt: 16:9 proporcje (9 / 16 * 100%) */
+    height: 0; /* Ukrywa domyślną wysokość, aby padding-bottom działał */
+    overflow: hidden; /* Na wszelki wypadek */
+    background-color: #000; /* Czarne tło przed załadowaniem filmu */
+    border-radius: 8px; /* Zaokrąglone rogi dla filmiku */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Delikatny cień */
+}
+
+.responsive-video iframe {
+    position: absolute; /* Pozycjonowanie absolutne w stosunku do responsive-video */
+    top: 0;
+    left: 0;
+    width: 100%; /* Wypełnij całą szerokość */
+    height: 100%; /* Wypełnij całą wysokość */
+    border: 0; /* Usuń ramkę */
+}
+
+/* Responsywność dla wideo na mniejszych ekranach */
+@media (max-width: 768px) {
+    .video-container {
+        margin-top: 40px;
+    }
+    .video-container h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+/* Sekcja O Nas (About Us) */
+.about-us {
+    padding: 80px 0;
+    background-color: #fff; /* Białe tło */
+}
+
+.about-us .container {
+    display: flex; /* Używamy Flexboxa do stworzenia dwóch kolumn */
+    align-items: center; /* Wyrównuje tekst i obrazek w pionie do środka */
+    gap: 40px; /* Odstęp między kolumną tekstową a obrazkiem */
+    flex-wrap: wrap; /* Pozwala kolumnom zawinąć się na małych ekranach */
+}
+
+.about-us .text-content {
+    flex: 1 1 55%; /* Pozwala kolumnie tekstowej zająć ~55% szerokości */
+    text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+.about-us .image-content {
+    flex: 1 1 40%; /* Pozwala kolumnie z obrazkiem zająć ~40% szerokości */
+}
+
+.about-us h2 {
+    font-size: 2.5em; /* Duży nagłówek */
+    color: #3a2b21; /* Ciemny brąz */
+    margin-bottom: 25px;
+}
+
+.about-us p {
+    font-size: 1.1em; /* Lekko większa czcionka dla czytelności */
+    color: #555; /* Ciemnoszary tekst */
+    line-height: 1.7; /* Większy odstęp między liniami */
+    margin-bottom: 20px;
+}
+
+.about-us .image-content img {
+    width: 100%; /* Obrazek wypełnia całą szerokość swojej kolumny */
+    height: auto; /* Zachowuje proporcje */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Delikatny cień */
+}
+
+.about-us .btn {
+    margin-top: 20px; /* Odstęp nad przyciskiem "Zobacz Nasze Wypieki" */
+}
+
+/* Responsywność dla sekcji O Nas */
+@media (max-width: 768px) {
+    .about-us .container {
+        flex-direction: column; /* Układa kolumny jedna pod drugą na mobilkach */
+    }
+
+    .about-us .text-content,
+    .about-us .image-content {
+        flex-basis: 100%; /* Obie kolumny zajmują 100% szerokości */
+    }
+
+    .about-us .text-content {
+        text-align: center; /* Wyśrodkuj tekst na mobilkach */
+        order: 2; /* Ustawia tekst POD obrazkiem na mobilkach */
+    }
+
+    .about-us .image-content {
+        order: 1; /* Ustawia obrazek NAD tekstem na mobilkach */
+    }
+
+    .about-us h2 {
+        font-size: 2em;
+    }
+}

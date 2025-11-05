@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+a { 
+    text-decoration: none;
+    color: #6a4b3a;
+    transition: color 0.3s ease;
+
+}
+
+a:hover {
+    color: #a0785a;
+}
+
+
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: burlywood;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+
+
+}
+
+.btn:hover { 
+    background-color: gainsboro;
+}
+
+/* Header */
+.main-header {
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+
+.top-bar {
+    background-color: #f1f1f1; 
+    padding: 10px 0; 
+    font-size: 0.9em; 
+    color: #666; 
+    border-bottom: 1px solid #eee; 
+}
+
+.top-bar .container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+
+
+.navbar .container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 20px; 
+}
+
+.logo img {
+    height: 80px; 
+    display: block; 
+}
+
+.navbar nav ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+}
+
+.navbar nav ul li {
+    margin-left: 50px;
+}
+
+.navbar nav ul li a {
+    color: #333; 
+    font-weight: 600; 
+    padding: 8px 0; 
+    position: relative;
+}
+
+/* Podkreślenie przy najechaniu na link w nawigacji */
+.navbar nav ul li a::after {
+    content: ''; 
+    position: absolute;
+    width: 0; 
+    height: 2px; 
+    background-color: #6a4b3a; 
+    left: 0;
+    bottom: 0; 
+    transition: width 0.3s ease; 
+}
+
+.navbar nav ul li a:hover::after {
+    width: 100%; 
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    .top-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar nav,
+    .navbar {
+        display: none; 
+    }
+    .navbar .container {
+        justify-content: center; 
+    }
+}
+
+
+
+
+/* Sekcja Galerii */
+.gallery-section {
+    padding: 60px 0; 
+    background-color: #f8f8f8; 
+    text-align: center; 
+}
+
+.gallery-section h2 {
+    margin-bottom: 40px; 
+    color: #3a2b21;
+}
+
+.gallery-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.gallery-item {
+    background-color: #fff; 
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); 
+}
+
+.gallery-image {
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover; 
+    display: block; 
+}
+
+
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .gallery-image {
+        height: 250px; 
+    }
+}
+
+
+
+/* Kontener na filmik w galerii */
+.video-container {
+    margin-top: 60px; 
+    margin-bottom: 20px; 
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center; 
+    padding: 0 20px; 
+}
+
+.video-container h3 {
+    margin-bottom: 30px; 
+    color: #6a4b3a; 
+    font-size: 2.2em;
+}
+
+/* RESPONSYWNE WIDEO (utrzymywanie proporcji 16:9) */
+.responsive-video {
+    position: relative; 
+    width: 100%; 
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden; 
+    background-color: #000; 
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+.responsive-video iframe {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    border: 0; 
+}
+
+/* Responsywność dla wideo na mniejszych ekranach */
+@media (max-width: 768px) {
+    .video-container {
+        margin-top: 40px;
+    }
+    .video-container h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+}
+
